@@ -2,7 +2,7 @@ var express   = require('express');
 var url       = require('url');
 
 // Configs
-var PORT      = process.env.HTTP_PORT || 3000;
+var PORT      = process.env.PORT || 3000;
 var AZK_UID   = process.env.AZK_UID;
 var azkInstanceData = {
   seq: null,    // instance sequence

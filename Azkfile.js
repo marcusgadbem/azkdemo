@@ -1,35 +1,27 @@
-/**
- * Documentation: http://docs.azk.io/Azkfile.js
- */
-
-// Adds the systems that shape your system
 systems({
   azkdemo: {
-    // Dependent systems
     depends: [],
-    // More images:  http://images.azk.io
     image: {"docker": "azukiapp/node:0.12"},
-    // Steps to execute before running instances
     provision: [
-      "npm installiiiiiiii",
+      "npm install",
     ],
     workdir: "/azk/#{manifest.dir}",
     shell: "/bin/bash",
     command: "npm start",
-    wait: {"retry": 20, "timeout": 1000},
     mounts: {
       '/azk/#{manifest.dir}': path("."),
     },
-    scalable: {"default": 2},
+    scalable: {"default": 1},
     http: {
       domains: [ "#{system.name}.#{azk.default_domain}" ]
     },
+    ports: {
+      http: "9999/tcp",
+    },
+    wait: {"retry": 20, "timeout": 1000},
     envs: {
-      // set instances variables
       NODE_ENV: "dev",
+      PORT: "1111",
     },
   }
 });
-
-
-
