@@ -6,7 +6,7 @@
 systems({
   azkdemo: {
     // Dependent systems
-    depends: ["redis"],
+    depends: [],
     // More images:  http://images.azk.io
     image: {"docker": "azukiapp/node:0.12"},
     // Steps to execute before running instances
@@ -28,18 +28,6 @@ systems({
       // set instances variables
       NODE_ENV: "dev",
     },
-  },
-  // Adds the "redis" system
-  redis: {
-    image: "redis",
-    // <-- add command and mounts
-    command: "redis-server --appendonly yes",
-    mounts: {
-      "/data": persistent("data"),
-    },
-    export_envs: {
-      "DATABASE_URL": "redis://#{net.host}:#{net.port[6379]}"
-    }
   }
 });
 
