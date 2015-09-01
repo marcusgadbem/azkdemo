@@ -11,11 +11,11 @@ systems({
     image: {"docker": "azukiapp/node:0.12"},
     // Steps to execute before running instances
     provision: [
-      "npm install",
+      "npm installiiiiiiii",
     ],
     workdir: "/azk/#{manifest.dir}",
     shell: "/bin/bash",
-    command: "npm startiiiii",
+    command: "npm start",
     wait: {"retry": 20, "timeout": 1000},
     mounts: {
       '/azk/#{manifest.dir}': path("."),
